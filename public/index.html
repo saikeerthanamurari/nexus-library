@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Library - Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">Nexus<span>Library</span></div>
+        </header>
+
+        <main class="form-container">
+
+            <!-- PAGE 1: Identity & Language -->
+            <div id="page-1" class="request-card fade-in">
+                <h1>Step 1: Your Profile</h1>
+                <p>Tell us who you are and choose your preferred language.</p>
+
+                <form id="step1-form" onsubmit="goToPage2(event)">
+                    <div class="input-group">
+                        <input type="text" id="student-name" required placeholder=" ">
+                        <label for="student-name">Student Name</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="roll-number" required placeholder=" ">
+                        <label for="roll-number">Roll Number</label>
+                    </div>
+
+                    <div class="input-group">
+                        <select id="language-select" required>
+                            <option value="" disabled selected>Select Language (భాష / மொழி / भाषा)</option>
+                            <option value="English">English</option>
+                            <option value="Telugu">Telugu (తెలుగు)</option>
+                            <option value="Hindi">Hindi (हिंदी)</option>
+                            <option value="Tamil">Tamil (தமிழ்)</option>
+                            <option value="Malayalam">Malayalam (മലയാളം)</option>
+                            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                            <option value="Marathi">Marathi (मराठी)</option>
+                            <option value="Bengali">Bengali (বাংলা)</option>
+                            <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+                            <option value="Punjabi">Punjabi (ਪੰਜਾਬੀ)</option>
+                        </select>
+                        <div class="select-arrow"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Next Step ➔</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- PAGE 2: Interest & Book Selection -->
+            <div id="page-2" class="request-card" style="display: none;">
+                <button type="button" class="back-btn" onclick="goToPage1()">⬅ Back</button>
+                <h1 id="page-2-title">Find a Book</h1>
+                <p id="page-2-subtitle">Select an interest to see available books!</p>
+
+                <form id="step2-form" onsubmit="submitBorrowRequest(event)">
+                    <div class="input-group">
+                        <select id="interest-select" required onchange="loadBooksForInterestAndLanguage()">
+                            <!-- This will be dynamically populated in the user's native language! -->
+                        </select>
+                        <div class="select-arrow"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <select id="book-select" required>
+                            <option value="" disabled selected>First select an interest above...</option>
+                        </select>
+                        <div class="select-arrow"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="borrow-btn">
+                        <span>Borrow Book</span>
+                    </button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Message</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
